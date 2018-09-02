@@ -25,8 +25,10 @@ if is_admin():
     # ip, subnetmask gateway설정
     nic.EnableStatic(IPAddress=[ip],SubnetMask=[subnetmask])
     nic.SetGateways(DefaultIPGateway=[gateway])
-    nic.SetDNSServerSearchOrder([dns])
-    
+    nic.SetDNSServerSearchOrder([dns,dns2])
+
+
+    print(nic)
 else:
     # Re-run the program with admin rights
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
